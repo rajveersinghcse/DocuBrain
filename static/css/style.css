@@ -1,0 +1,95 @@
+body {
+    background-color: #f8f9fa;
+    padding-bottom: 60px;
+}
+
+.container {
+    max-width: 1000px;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.card-header {
+    font-weight: 500;
+}
+
+#answerDisplay {
+    white-space: pre-line;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#fileDetailsDisplay {
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* File type badges */
+.file-badge {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    margin-right: 5px;
+}
+
+.badge-text {
+    background-color: #0dcaf0;
+    color: #fff;
+}
+
+.badge-image {
+    background-color: #20c997;
+    color: #fff;
+}
+
+.badge-video {
+    background-color: #fd7e14;
+    color: #fff;
+}
+
+.badge-audio {
+    background-color: #d63384;
+    color: #fff;
+}
+
+.badge-pdf {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.badge-tabular {
+    background-color: #6f42c1;
+    color: #fff;
+}
+
+/* Loading animation */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .col-md-6.offset-md-3 {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG System - File Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="text-center my-5">
+            <h1>RAG System File Analysis</h1>
+            <p class="lead">Upload a file and ask questions about its contents</p>
+        </header>
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">File Upload</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="uploadForm" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="fileInput" class="form-label">Select File</label>
+                                <input type="file" class="form-control" id="fileInput" name="file" required>
+                                <div class="form-text" id="fileTypeInfo">
+                                    Supported file types: Text (.txt, .md, .json), Images (.jpg, .png, .gif), 
+                                    Video (.mp4, .avi, .mov), Audio (.mp3, .wav), PDF (.pdf), Tabular (.csv, .xlsx)
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="queryInput" class="form-label">Your Question</label>
+                                <input type="text" class="form-control" id="queryInput" name="query" 
+                                    placeholder="What would you like to know about this file?" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Upload & Analyze</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mt-4 d-none" id="resultsCard">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="mb-0">Analysis Results</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <h4>Your Query</h4>
+                            <p id="queryDisplay" class="lead p-2 bg-light rounded"></p>
+                        </div>
+                        <div class="mb-3">
+                            <h4>Answer</h4>
+                            <div id="answerDisplay" class="p-3 bg-light rounded"></div>
+                        </div>
+                        <div class="mb-3" id="extraInfoSection">
+                            <h4>File Information</h4>
+                            <dl class="row">
+                                <dt class="col-sm-3">File Type</dt>
+                                <dd class="col-sm-9" id="fileTypeDisplay"></dd>
+                                <dt class="col-sm-3">Details</dt>
+                                <dd class="col-sm-9" id="fileDetailsDisplay"></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="loadingModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center p-5">
+                        <div class="spinner-border text-primary mb-4" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <h4>Analyzing your file...</h4>
+                        <p class="text-muted">This may take a moment depending on the file size and complexity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title">Error</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="errorMessage"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

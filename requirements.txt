@@ -1,0 +1,10 @@
+flask
+werkzeug
+openai
+python-dotenv
+pandas
+numpy
+PyPDF2
+opencv-python
+moviepy
+llama-index-core
